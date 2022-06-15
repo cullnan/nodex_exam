@@ -10,8 +10,8 @@ export const Workspace = observer(() => {
                 workspaceStore.workspaces.map(item => (
                 <div className="workspace"
                  onClick={() => {
-                   workspaceStore.setSelectWorkspace({img: item.img, title:item.title ,desks: item.desks})
-                   workspaceStore.selectedDesk = workspaceStore.selectedWorkspace.desks[0].title
+                   workspaceStore.selectedWorkspace = item.id
+                   workspaceStore.selectedDesk = workspaceStore.workspaces[workspaceStore.workspaces.findIndex(ws => ws.id == workspaceStore.selectedWorkspace)].desks[0].id
                    console.log({img: item.img, title:item.title, desks: item.desks});
                   }}
                 >
