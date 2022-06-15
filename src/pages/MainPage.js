@@ -35,7 +35,7 @@ export const MainPage = observer(() => {
             <div className="header">
                 <div className="workspace_in_main">
                     <div className="workspace_img"></div>
-                    <div className="workspace_title"> {workspaceStore.selectedWorkspace.title} </div>
+                    <div className="workspace_title"> {workspaceStore.workspaces.find(item => item.id == workspaceStore.selectedWorkspace).title} </div>
                 </div>
 
                 <Desk desks={workspaceStore.selectedWorkspace.desks}/>
