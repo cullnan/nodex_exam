@@ -3,7 +3,9 @@ import workspaceStore from "../data/stores/workspaceStore";
 
 const handleClickWork = (item) => {
     console.log(item);
-    workspaceStore.addWorkspace({img: item.img, title: item.title, desks: item.desks })
+    workspaceStore.addWorkspace({id: item.id, img: item.img, title: item.title, desks: item.desks })
+    workspaceStore.selectedWorkspace(item.id)
+    workspaceStore.selectedDesk(-1)
 }
 
 const Popup = ({active, setActive}) => {
@@ -20,7 +22,7 @@ const Popup = ({active, setActive}) => {
                     <input type="tel" placeholder="Название" value={titleValue} onChange={(event) => setTitleValue(event.target.value)}/>
                     <div className='button' 
                     onClick={() => {
-                        handleClickWork({img: imgValue, title: titleValue, desks: []})
+                        handleClickWork({id: Date.now(), img: imgValue, title: titleValue, desks: []})
                         setActive(false)
                         setImgValue("")
                         setTitleValue("")
