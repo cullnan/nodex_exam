@@ -5,21 +5,22 @@ import workspaceStore from "../data/stores/workspaceStore";
 const handleClickDesk = (index, item) =>{
     console.log(item);
     workspaceStore.addDesk(index, item)
-    workspaceStore.setSelectWorkspaceIndex(index)    
 }
 
+const setSelectedDesk = (workspaceId, deskIndex) => {
+    workspaceStore.selectedDesk = workspaceStore.workspaces.find(item => item.id === workspaceId).desks[deskIndex].id
+}
 
 export const Desk = observer(( ) => {
     const desksArr = []
 
-    for(let i = 0; i < workspaceStore.selectedWorkspace.desks.length; i++){
+    for(let i = 0; i < workspaceStore.workspaces[workspaceStore.workspaces.findIndex(item => item.id === workspaceStore.selectedWorkspace)].desks.length; i++){
         desksArr.push(
-        <div class="desk" onClick={() => {workspaceStore.selectedDesk = workspaceStore.selectedWorkspace.desks[i].title}}>
-            <input type="text" name="" placeholder="New Desk" value={workspaceStore.workspaces[workspaceStore.getWorkIndex(workspaceStore.selectedWorkspace.title)].desks[i].title} 
+        <div className="desk" onClick={() => setSelectedDesk(workspaceStore.selectedWorkspace, i)}>
+            <input type="text" name="" placeholder="New Desk" value={workspaceStore.workspaces[workspaceStore.workspaces.findIndex(item => item.id === workspaceStore.selectedWorkspace)].desks[i].title} 
                         onChange={(event) => {
-                        workspaceStore.setDeskTitle(workspaceStore.getWorkIndex(workspaceStore.selectedWorkspace.title),
+                        workspaceStore.setDeskTitle(workspaceStore.workspaces.findIndex(item => item.id === workspaceStore.selectedWorkspace),
                         i, event.target.value)
-                        workspaceStore.selectedDesk = event.target.value
                         }}/>
         </div>)
     }
@@ -29,7 +30,7 @@ export const Desk = observer(( ) => {
               {
                     desksArr
               }
-            <button className="add_desk" onClick={() => handleClickDesk(workspaceStore.getWorkIndex(workspaceStore.selectedWorkspace.title), {title: 'New Desk', categories: [] }) }>+</button>
+            <button className="add_desk" onClick={() => handleClickDesk(workspaceStore.workspaces.findIndex(item => item.id === workspaceStore.selectedWorkspace), {id: Date.now(), title: 'New Desk', categories: [] }) }>+</button>
         </div>
     )
 });
