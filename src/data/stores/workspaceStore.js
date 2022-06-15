@@ -3,41 +3,54 @@ import { makeAutoObservable } from "mobx";
 class WorkspaceStore{
     workspaces=[
         {
+            id: 1,
             img: "",
             title: "Nodes",
             desks: [
                 {
+                    id: 1,
                     title: "Frontend",
                     categories: [{
+                        id: 1,
                         title: "Ready",
                         tasks: [
                             {
+                                id: 1,
                                 title: "Сделать макет"
                             }
                         ]
                     } ]
                 },
                 {
-                    title: "End",
+                    id: 2,
+                    title: "Backend",
                     categories: [ ]
                 }
             ]
         }
     ]
 
-    selectedWorkspace = this.workspaces[0]
-    selectedDesk = this.workspaces[0].desks[0].title
+    selectedWorkspace = 1
+    selectedDesk = this.workspaces[0].desks[0].id
 
     constructor(){
         makeAutoObservable(this)
     }
 
-    setSelectWorkspace(workspace){
-        this.selectedWorkspace = workspace
+    getIndexById(id){
+        for(let i = 0; i < this.workspaces.length; i++){
+            if(this.workspacesp[i].id === id){
+                return i;
+            }
+        }
     }
 
-    setSelectWorkspaceIndex(index){
-        this.selectedWorkspace = this.workspaces[index]
+    getDeskById(index, id=this.selectedDesk){
+        for(let i = 0; i < this.workspaces[index].desks.length; i++){
+            if(this.workspacesp[i].id === id){
+                return i;
+            }
+        }
     }
 
     addWorkspace(item){
@@ -66,8 +79,8 @@ class WorkspaceStore{
     }
 
     getDeskIndex(title){
-        for(let i = 0; i < this.selectedWorkspace.desks.length; i++){
-            if( title === this.selectedWorkspace.desks[i].title){
+        for(let i = 0; i < this.workspaces.find(item => item.id === this.selectedWorkspace).desks.length; i++){
+            if( title === this.workspaces.find(item => item.id === this.selectedWorkspace).desks[i].title){
                 console.log(i);
                 return i;
             }
