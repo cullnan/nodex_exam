@@ -5,6 +5,7 @@ import Popup from '../components/Popup';
 import { observer } from "mobx-react-lite";
 import { useState } from 'react';
 import Category from "../components/Categories";
+import { Input } from 'antd';
 
 export const MainPage = observer(() => {
  
@@ -22,7 +23,8 @@ export const MainPage = observer(() => {
                 </div>
             </div>
 
-            <Workspace />
+            <Input placeholder="Basic usage" />
+            {workspaceStore.workspaces.length > 0 ? <Workspace /> : <></>}
 
             <div className="add">
                 <button className="add_btn" onClick={() => setPopupActive(true)}>Добавить рабочую область</button>
@@ -34,14 +36,15 @@ export const MainPage = observer(() => {
         <div className="main_block">
             <div className="header">
                 <div className="workspace_in_main">
-                    <div className="workspace_img"></div>
-                    <div className="workspace_title"> {workspaceStore.workspaces.find(item => item.id == workspaceStore.selectedWorkspace).title} </div>
+                    <div className="workspace_img"><img src={workspaceStore.workspaces.find(item => item.id == workspaceStore.selectedWorkspace).img || null} alt={workspaceStore.workspaces.find(item => item.id == workspaceStore.selectedWorkspace).title[0]}/></div>
+                    <div className="workspace_title">{workspaceStore.workspaces.length > 0 ? workspaceStore.workspaces.find(item => item.id == workspaceStore.selectedWorkspace).title : <></>}  </div>
                 </div>
 
-                <Desk desks={workspaceStore.selectedWorkspace.desks}/>
+                {workspaceStore.workspaces.length > 0 ? <Desk desks={workspaceStore.selectedWorkspace.desks}/> : <></>}
+                
             </div>
 
-            <Category />
+            {workspaceStore.workspaces.length > 0 ? <Category /> : <></>}
         </div>
     </div>
     )
