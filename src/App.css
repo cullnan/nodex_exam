@@ -36,12 +36,18 @@ font-family: 'Poppins', sans-serif;
 
 .user_img{
   margin: auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
   margin-right: 0px;
   width: 70px;
   height: 70px;
+  background-image: url(https://memepedia.ru/wp-content/uploads/2020/03/gigachad-1.jpg);
+  background-size: cover;
+  background-position: center;
   border-radius: 50%;
-  background-color: antiquewhite;
 }
+
 
 .user_info{
   display: block;
@@ -95,6 +101,19 @@ hr{
 .workspace:hover{
   background-color: #DBCEE3;
 }
+
+.delete_icon{
+  margin: auto;
+  cursor: pointer;
+  margin-right: 25px;
+  background-image: url(https://cdn-icons-png.flaticon.com/512/709/709518.png);
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
 
 .workspace_img{
   width: 50px;
@@ -203,8 +222,10 @@ touch-action: manipulation;
   background-color: #DBCEE3;
   border-radius: 100px; 
   color: #6A4593;
-  font-size: 15px;
-  padding: 7px 20px;
+  font-size: 20px;
+  height: 43px;
+  width: 45px;
+  padding-bottom: 3px;
   font-weight: bolder;
   border: 0;
   cursor: pointer;
@@ -220,6 +241,7 @@ touch-action: manipulation;
 .categories{
   display: flex;
   justify-content: start;
+  flex-wrap: wrap;
   overflow: auto;
   flex-grow: 3;
 }
@@ -231,10 +253,9 @@ touch-action: manipulation;
 
 .category{
   height: max-content;
-  width: 270px;
+  width: 290px;
   padding: 20px;
   margin: 20px;
-  background-color: #A1CDEB;
   border-radius: 20px;
   font-weight: bold;
 }
@@ -257,14 +278,15 @@ touch-action: manipulation;
 .category_title input{
   background-color: #A1CDEB;
   font-weight: 600;
-  width: 250px;
+  width: 207px;
   size: initial;
   font-size: 17px;
   border: 0;
 }
 
 .category_edit{
-  font-size: larger;
+  cursor: pointer;
+  font-size: 18px;
 }
 
 .task{
@@ -272,8 +294,12 @@ touch-action: manipulation;
   width: 250px;
   padding: 10px;
   background-color: white;
-  border-radius: 20px;
-  font-weight: normal;
+  border-radius: 15px;
+}
+
+.task_main{
+  display: flex;
+  justify-content: space-around;
 }
 
 .task:hover{
@@ -281,8 +307,16 @@ touch-action: manipulation;
 }
 
 .task input{
+  font-size: 16px;
+  font-weight: 600;
   border: 0;
   background-color: rgba(255, 255, 255, 0);
+}
+
+.anticon svg {
+  margin-top: 3px;
+  width: 18px;
+  height: 18px;
 }
 
 .add_task{
@@ -290,9 +324,11 @@ touch-action: manipulation;
   background-color: white;
   border-radius: 100px; 
   color: black;
-  font-size: 15px;
-  padding: 7px 15px;
-  font-weight: bolder;
+  font-size: 20px;
+  padding-bottom: 8px;
+  width: 40px;
+  height: 40px;
+  font-weight: 900;
   border: 0;
   cursor: pointer;
 }
@@ -366,6 +402,10 @@ touch-action: manipulation;
   transition: all 250ms;
   border: 0;
   font-size: 18px;
+}
+
+input:active, input:focus{
+  outline: none;
 }
 
 .popup form .button:hover {
