@@ -106,7 +106,6 @@ hr{
   margin: auto;
   cursor: pointer;
   margin-right: 25px;
-  background-image: url(https://cdn-icons-png.flaticon.com/512/709/709518.png);
   width: 30px;
   height: 30px;
   background-size: contain;
@@ -410,4 +409,8 @@ input:active, input:focus{
 
 .popup form .button:hover {
   transform: scale(1.05) ;
+}
+
+.ant-picker-input input{
+  color: #d9d9d9;
 }
