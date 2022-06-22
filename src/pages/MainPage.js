@@ -23,7 +23,7 @@ export const MainPage = observer(() => {
                 </div>
             </div>
 
-            <Input placeholder="Basic usage" />
+            <Input placeholder="Basic usage" onChange={() => workspaceStore.searchTask('купи')}/>
             {workspaceStore.workspaces.length > 0 ? <Workspace /> : <></>}
 
             <div className="add">
