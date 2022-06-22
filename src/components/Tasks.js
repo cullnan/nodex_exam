@@ -93,7 +93,6 @@ const Tasks = observer(({sWorkspace, sDesk, categoryIndex}) => {
         return current && current < moment().endOf('day');
       };
 
-    console.log("categoryIndex: ", categoryIndex );
     if(workspaceStore.workspaces[sWorkspace].desks.length != 0 && workspaceStore.workspaces[sWorkspace].desks[sDesk].categories.length != 0 && workspaceStore.workspaces[sWorkspace].desks[sDesk].categories[categoryIndex].tasks.length != 0){
         for(let i = 0; i < workspaceStore.workspaces.find(item => item.id == workspaceStore.selectedWorkspace).desks.find(item => item.id == workspaceStore.selectedDesk).categories[categoryIndex].tasks.length; i++){
             tasksArr.push(
@@ -124,7 +123,7 @@ const Tasks = observer(({sWorkspace, sDesk, categoryIndex}) => {
                     console.log(e.value);
                     
                 }
-                } disabledDate={disabledDate} style={{border: 0, width: '100px', color: '#d9d9d9', margin: 0, padding: '2px'}}/>
+                } disabledDate={disabledDate} style={{border: 0, width: '110px', margin: 0, padding: '2px'}}/>
                 </div>
             </div>
         )
