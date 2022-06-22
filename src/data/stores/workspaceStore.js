@@ -119,6 +119,19 @@ class WorkspaceStore{
         this.workspaces[workIndex].desks[deskIndex].categories[categoryIndex].tasks[taskIndex].title = title;
     }
 
+    searchTask(val){
+        this.workspaces.map(works => {
+            works.desks.map(desk => {
+                desk.categories.map(category => {
+                    category.tasks.map(task => {
+                        if(task.title.includes(val)){
+                            console.log(task.title);
+                        }
+                    })
+                })
+            })
+        })
+    }
 }
 
 export default new WorkspaceStore();
