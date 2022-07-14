@@ -10,7 +10,7 @@ export const Workspace = observer(() => {
               {
                 workspaceStore.workspaces.map(item => (
                 <div className="workspace" >
-                  <div className="workspace_img"><img src={item.img || null} alt={item.title[0]}/></div>
+                  <div className="workspace_img"><img src={item.img || "https://plasticsurgery-ua.org/wp-content/uploads/2016/11/default-placeholder.png"}/></div>
                   <div className="workspace_title" 
                  onClick={() => {
                    workspaceStore.selectedWorkspace = item.id
