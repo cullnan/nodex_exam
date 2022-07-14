@@ -88,7 +88,7 @@ const Tasks = observer(({sWorkspace, sDesk, categoryIndex}) => {
         ]}
     />
     );
-
+    
     const disabledDate = (current) => {
         return current && current < moment().endOf('day');
       };
