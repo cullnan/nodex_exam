@@ -35,6 +35,7 @@ class WorkspaceStore{
 
     selectedWorkspace = 1
     selectedDesk = this.workspaces[0].desks[0].id
+    options = []
 
     constructor(){
         makeAutoObservable(this)
@@ -120,12 +121,21 @@ class WorkspaceStore{
     }
 
     searchTask(val){
+        console.log(val);
+        
+        this.options = []
         this.workspaces.map(works => {
             works.desks.map(desk => {
                 desk.categories.map(category => {
                     category.tasks.map(task => {
-                        if(task.title.includes(val)){
+                        if(task.title.toLowerCase().includes(val)){
                             console.log(task.title);
+                            this.options.push({
+                                idWork: works.id,
+                                idDesk: desk.id,
+                                title: works.title + "->" + desk.title + "->" + category.title + "->" +task.title
+                            })
+                            console.log(this.options[0].idDesk);
                         }
                     })
                 })
